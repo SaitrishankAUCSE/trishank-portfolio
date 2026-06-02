@@ -188,7 +188,7 @@ export default function Portfolio() {
               <div className="stat-label">Internships Completed</div>
             </div>
             <div className="stat-card">
-              <div className="stat-num">7+</div>
+              <div className="stat-num">6+</div>
               <div className="stat-label">Production Projects</div>
             </div>
             <div className="stat-card">
@@ -295,28 +295,25 @@ export default function Portfolio() {
         <h2 className="section-title reveal">Selected Artifacts</h2>
         <div className="projects-grid reveal">
 
-          {/* 1 — MisCom */}
+          {/* 1 — Idea Probe App */}
           <div className="project-card">
             <div className="project-header">
-              <div className="project-title">MisCom — Social Messaging Platform</div>
-              <span className="project-badge">LIVE</span>
+              <div className="project-title">Idea Probe App</div>
+              <span className="project-badge badge-purple">APP</span>
             </div>
-            <p className="project-desc">A production-grade social messaging ecosystem with real-time chat, user discovery, and a premium dark-mode experience.</p>
+            <p className="project-desc">An interactive platform designed to explore, validate, and brainstorm conceptual ideas effectively.</p>
             <div className="project-bullets">
-              <div className="project-bullet">Firebase-powered authentication with Google OAuth, OTP verification, and persistent session management</div>
-              <div className="project-bullet">Real-time Firestore synchronization for cross-device messaging and user discovery</div>
-              <div className="project-bullet">Dual-layer identity system with unique usernames, display names, and real-time availability validation</div>
+              <div className="project-bullet">Dynamic user interface engineered to capture and process brainstorming inputs</div>
+              <div className="project-bullet">Responsive design ensuring accessibility across web and mobile platforms</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
                 <span className="tag purple">React</span>
-                <span className="tag purple">Vite</span>
-                <span className="tag green">Firebase</span>
                 <span className="tag">TypeScript</span>
-                <span className="tag">Vercel</span>
+                <span className="tag green">Vite</span>
               </div>
-              <a href="https://miscom-xi.vercel.app/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
-              <a href="https://github.com/SaitrishankAUCSE/MisCom" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://idea-probe-app.vercel.app/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
+              <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
             </div>
           </div>
 
@@ -440,26 +437,6 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* 8 — Idea Probe App */}
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Idea Probe App</div>
-              <span className="project-badge badge-purple">APP</span>
-            </div>
-            <p className="project-desc">An interactive platform designed to explore, validate, and brainstorm conceptual ideas effectively.</p>
-            <div className="project-bullets">
-              <div className="project-bullet">Dynamic user interface engineered to capture and process brainstorming inputs</div>
-              <div className="project-bullet">Responsive design ensuring accessibility across web and mobile platforms</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag purple">React</span>
-                <span className="tag">TypeScript</span>
-                <span className="tag green">Vite</span>
-              </div>
-              <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
-            </div>
-          </div>
 
         </div>
       </section>
