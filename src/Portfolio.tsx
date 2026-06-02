@@ -180,7 +180,7 @@ export default function Portfolio() {
           </div>
           <div className="about-stats">
             <div className="stat-card">
-              <div className="stat-num">7.94</div>
+              <div className="stat-num">8.12</div>
               <div className="stat-label">CGPA — B.Tech CSE</div>
             </div>
             <div className="stat-card">
@@ -188,7 +188,7 @@ export default function Portfolio() {
               <div className="stat-label">Internships Completed</div>
             </div>
             <div className="stat-card">
-              <div className="stat-num">6+</div>
+              <div className="stat-num">7+</div>
               <div className="stat-label">Production Projects</div>
             </div>
             <div className="stat-card">
@@ -440,6 +440,27 @@ export default function Portfolio() {
             </div>
           </div>
 
+          {/* 8 — Idea Probe App */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Idea Probe App</div>
+              <span className="project-badge badge-purple">APP</span>
+            </div>
+            <p className="project-desc">An interactive platform designed to explore, validate, and brainstorm conceptual ideas effectively.</p>
+            <div className="project-bullets">
+              <div className="project-bullet">Dynamic user interface engineered to capture and process brainstorming inputs</div>
+              <div className="project-bullet">Responsive design ensuring accessibility across web and mobile platforms</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">React</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag green">Vite</span>
+              </div>
+              <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -521,7 +542,7 @@ export default function Portfolio() {
             <div className="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
             <div className="edu-school">Andhra University College of Engineering</div>
             <div className="edu-year">2022 — 2026 · Visakhapatnam</div>
-            <div className="edu-score">7.94</div>
+            <div className="edu-score">8.12</div>
             <div className="edu-score-label">CGPA</div>
           </div>
 
