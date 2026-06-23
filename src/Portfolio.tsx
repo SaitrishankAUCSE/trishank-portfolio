@@ -5,8 +5,9 @@ import { MeshGradient } from '@paper-design/shaders-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Home, User, Wrench, FolderGit2, Briefcase, Mail,
-  GraduationCap
+  GraduationCap, Cloud, TrendingUp
 } from 'lucide-react';
+import DisplayCards from './components/ui/display-cards';
 
 /* ── Animated counter hook ── */
 function useCountUp(end: number, duration = 1800, decimals = 0, suffix = '') {
@@ -267,8 +268,8 @@ export default function Portfolio() {
             <p className="hero-eyebrow">// Crafting digital architectures.</p>
 
             <h1 className="hero-name" style={{ fontFamily: "'Playfair Display', serif", color: '#ffffff' }}>
-              Venkata Sai<br />
-              <span className="highlight gradient-text" style={{ fontFamily: "'Playfair Display', serif" }}>Trishank Kamma</span>
+              Venkata Sai Trishank<br />
+              <span className="highlight gradient-text" style={{ fontFamily: "'Playfair Display', serif" }}>Kamma</span>
             </h1>
 
             {/* Animated rotating role */}
@@ -279,12 +280,12 @@ export default function Portfolio() {
                     key={index}
                     className="absolute font-semibold text-[#ff5722]"
                     style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1rem', letterSpacing: '0.05em' }}
-                    initial={{ opacity: 0, y: -40 }}
+                    initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: 'spring', stiffness: 50 }}
                     animate={
                       titleNumber === index
                         ? { y: 0, opacity: 1 }
-                        : { y: titleNumber > index ? -50 : 50, opacity: 0 }
+                        : { y: titleNumber > index ? -150 : 150, opacity: 0 }
                     }
                   >
                     {'< '}{title}{' />'}
@@ -294,14 +295,13 @@ export default function Portfolio() {
             </div>
 
             <p className="hero-role">
-              <strong>Full Stack Developer</strong> &amp; <strong>Visual Architect</strong><br />
+              <strong>Software Engineer</strong> &amp; <strong>CS Student</strong><br />
               based in Visakhapatnam, India
             </p>
 
             <p className="hero-desc">
-              Building scalable web applications and deploying ML-powered solutions.
-              Hands-on with Web3 platforms, real-time APIs, and data-driven systems
-              that ship to production.
+              Software Engineer with hands-on internship experience delivering production-grade platforms using Python, Next.js, and Firebase.
+              Skilled in REST API integration, data-driven Python development, and end-to-end project delivery.
             </p>
 
             <div className="hero-actions">
@@ -345,9 +345,9 @@ export default function Portfolio() {
         <h2 className="section-title reveal">Who I Am</h2>
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I'm a <strong>Software Engineer</strong> pursuing B.Tech in Computer Science &amp; Engineering at Andhra University College of Engineering (2022–2026), with hands-on experience in <strong>Full Stack Development</strong> and <strong>Machine Learning</strong>.</p>
-            <p>I enjoy building end-to-end systems — from designing intelligent ML pipelines to shipping production-grade Web3 platforms. I believe great software lives at the intersection of <strong>clean architecture</strong> and <strong>real-world impact</strong>.</p>
-            <p>Currently serving as a <strong>Software Developer Intern at ANACT INFOTECH</strong>, working on API-driven Web3 applications with real-time user interactions and scalable backend workflows.</p>
+            <p>I'm a <strong>Software Engineer</strong> and final-year CS student at Andhra University College of Engineering (2022–2026), with hands-on internship experience delivering production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
+            <p>I am highly skilled in <strong>REST API integration</strong>, data-driven Python development, and end-to-end project delivery. I am also familiar with <strong>ML fundamentals</strong> and the effective use of modern AI tools.</p>
+            <p>I am currently seeking <strong>Software Engineer roles</strong> to leverage my technical foundation and passion for building scalable systems.</p>
           </div>
           <div className="about-stats">
             <div className="stat-card" ref={cgpa.ref}>
@@ -379,74 +379,65 @@ export default function Portfolio() {
         <div className="skills-grid reveal">
           <div className="skill-group">
             <div className="skill-group-icon">🐍</div>
-            <div className="skill-group-title">Programming Languages</div>
+            <div className="skill-group-title">Languages</div>
             <div className="skill-tags">
-              <span className="tag">Python</span>
-              <span className="tag">JavaScript</span>
+              <span className="tag purple">Python (strong)</span>
+              <span className="tag">JavaScript (basic)</span>
+              <span className="tag">SQL (basic)</span>
+              <span className="tag">HTML</span>
+              <span className="tag">CSS (basic)</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">⚛️</div>
-            <div className="skill-group-title">Frontend Development</div>
+            <div className="skill-group-title">Frontend & Frameworks</div>
             <div className="skill-tags">
-              <span className="tag purple">React.js</span>
               <span className="tag purple">Next.js</span>
-              <span className="tag">Responsive Web Design</span>
+              <span className="tag">React.js (basic)</span>
             </div>
           </div>
           <div className="skill-group">
-            <div className="skill-group-icon">📊</div>
-            <div className="skill-group-title">Data Science & ML</div>
+            <div className="skill-group-icon">🗄️</div>
+            <div className="skill-group-title">Databases & Backend</div>
             <div className="skill-tags">
-              <span className="tag">Pandas</span>
-              <span className="tag">NumPy</span>
-              <span className="tag purple">Random Forest</span>
-              <span className="tag purple">Logistic Regression</span>
-              <span className="tag">K-Means</span>
-              <span className="tag">Feature Engineering</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">🔧</div>
-            <div className="skill-group-title">Backend & APIs</div>
-            <div className="skill-tags">
-              <span className="tag">REST API Design</span>
-              <span className="tag green">Firebase Auth</span>
-              <span className="tag green">Firebase Firestore</span>
-              <span className="tag">Realtime Database</span>
-              <span className="tag">NoSQL</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">🔗</div>
-            <div className="skill-group-title">Web3 Technologies</div>
-            <div className="skill-tags">
-              <span className="tag purple">ethers.js</span>
-              <span className="tag">Web3Modal</span>
-              <span className="tag">Wallet Authentication</span>
-              <span className="tag purple">Token-Based Systems</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">🚀</div>
-            <div className="skill-group-title">Tools, CI/CD & Deployment</div>
-            <div className="skill-tags">
-              <span className="tag">Git</span>
-              <span className="tag">GitHub</span>
-              <span className="tag green">GitHub Actions</span>
-              <span className="tag green">Vercel</span>
-              <span className="tag">Google Cloud</span>
-              <span className="tag">VS Code</span>
+              <span className="tag purple">Firebase</span>
+              <span className="tag">Firestore</span>
+              <span className="tag">Realtime DB</span>
+              <span className="tag green">Auth</span>
+              <span className="tag">SQL (basic)</span>
+              <span className="tag purple">REST APIs</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">🧠</div>
-            <div className="skill-group-title">Core CS Concepts</div>
+            <div className="skill-group-title">Core CS</div>
             <div className="skill-tags">
-              <span className="tag">DSA</span>
-              <span className="tag">OOP</span>
-              <span className="tag">DBMS</span>
-              <span className="tag">Software Engineering</span>
+              <span className="tag">Data Structures & Algorithms</span>
+              <span className="tag">Object-Oriented Programming</span>
+              <span className="tag purple">Debugging</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">🤖</div>
+            <div className="skill-group-title">Machine Learning & AI</div>
+            <div className="skill-tags">
+              <span className="tag purple">Scikit-Learn</span>
+              <span className="tag">Pandas</span>
+              <span className="tag">NumPy</span>
+              <span className="tag">Prompt Engineering</span>
+              <span className="tag green">AI Tools (Claude, ChatGPT, Gemini, Cursor)</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">🛠️</div>
+            <div className="skill-group-title">Tools & Soft Skills</div>
+            <div className="skill-tags">
+              <span className="tag">Git</span>
+              <span className="tag">GitHub</span>
+              <span className="tag">Vercel</span>
+              <span className="tag">VS Code</span>
+              <span className="tag purple">Problem Solving</span>
+              <span className="tag">Leadership</span>
             </div>
           </div>
         </div>
@@ -461,19 +452,20 @@ export default function Portfolio() {
         <div className="projects-grid reveal">
           <div className="project-card">
             <div className="project-header">
-              <div className="project-title">Idea Probe App</div>
-              <span className="project-badge badge-purple">APP</span>
+              <div className="project-title">IdeaProbe – AI Startup Validator</div>
+              <span className="project-badge badge-purple">SAAS</span>
             </div>
-            <p className="project-desc">An interactive platform designed to explore, validate, and brainstorm conceptual ideas effectively.</p>
             <div className="project-bullets">
-              <div className="project-bullet">Dynamic user interface engineered to capture and process brainstorming inputs</div>
-              <div className="project-bullet">Responsive design ensuring accessibility across web and mobile platforms</div>
+              <div className="project-bullet">Built full-stack SaaS integrating Google Gemini AI with live web search to generate startup validation reports (TAM estimation, competitor analysis, risk assessment) via Next.js and Firebase</div>
+              <div className="project-bullet">Implemented Razorpay payment pipeline with server-side HMAC-SHA256 verification for premium upgrades; secured routes via Firebase Session Cookies and Next.js middleware</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
-                <span className="tag purple">React</span>
-                <span className="tag">TypeScript</span>
-                <span className="tag green">Vite</span>
+                <span className="tag purple">Next.js</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag">Gemini API</span>
+                <span className="tag">Razorpay</span>
+                <span className="tag purple">REST APIs</span>
               </div>
               <a href="https://idea-probe-app.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
               <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
@@ -481,110 +473,61 @@ export default function Portfolio() {
           </div>
           <div className="project-card">
             <div className="project-header">
-              <div className="project-title">Amerox Airdrop Platform</div>
-              <span className="project-badge badge-purple">WEB3</span>
-            </div>
-            <p className="project-desc">Gamified Web3 platform for token airdrops and interactive missions built at ANACT INFOTECH — production-deployed.</p>
-            <div className="project-bullets">
-              <div className="project-bullet">Built responsive frontend with Next.js &amp; React for dynamic user interactions and mission workflows</div>
-              <div className="project-bullet">Engineered scalable backend using Firebase Authentication &amp; API-based data handling</div>
-              <div className="project-bullet">Integrated Twitter API v2 and secure wallet connectivity via ethers.js &amp; Web3Modal</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag purple">Next.js</span>
-                <span className="tag purple">React</span>
-                <span className="tag green">Firebase</span>
-                <span className="tag">ethers.js</span>
-                <span className="tag">Twitter API</span>
-              </div>
-              <a href="http://airdrop.amerox.io/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="https://github.com/SaitrishankAUCSE/amerox-airdrop" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">House Price Prediction System</div>
+              <div className="project-title">HomieNest – AI Real Estate Platform</div>
               <span className="project-badge">ML</span>
             </div>
-            <p className="project-desc">End-to-end machine learning web app for real-time house price prediction with dynamic user input and instant results.</p>
             <div className="project-bullets">
-              <div className="project-bullet">Built regression models (Linear Regression) for accurate price prediction on structured housing datasets</div>
-              <div className="project-bullet">Data preprocessing &amp; feature engineering on real-world tabular data for improved model accuracy</div>
-              <div className="project-bullet">Deployed as a live web app supporting real-time user input and predictions</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag">Python</span>
-                <span className="tag">Scikit-learn</span>
-                <span className="tag purple">Pandas</span>
-                <span className="tag purple">NumPy</span>
-              </div>
-              <a href="https://houseprice.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Airdrop Game Engine</div>
-              <span className="project-badge badge-purple">WEB3</span>
-            </div>
-            <p className="project-desc">Gamified blockchain interaction engine where users complete on-chain and social missions to earn token rewards.</p>
-            <div className="project-bullets">
-              <div className="project-bullet">Quest-based mission architecture with multi-step task verification and reward distribution</div>
-              <div className="project-bullet">Wallet connectivity and on-chain transaction validation for secure reward claims</div>
-              <div className="project-bullet">Leaderboard and engagement tracking for competitive user retention</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag">JavaScript</span>
-                <span className="tag purple">React</span>
-                <span className="tag">Web3</span>
-                <span className="tag green">Firebase</span>
-              </div>
-              <a href="https://github.com/SaitrishankAUCSE/airdrop-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Twitter Social Engagement Game</div>
-              <span className="project-badge">API</span>
-            </div>
-            <p className="project-desc">Twitter-integrated social engagement platform that gamifies user interactions through verified social missions.</p>
-            <div className="project-bullets">
-              <div className="project-bullet">Twitter API v2 integration for real-time follow, retweet, and like verification workflows</div>
-              <div className="project-bullet">Automated mission validation engine with server-side proof-of-completion checks</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag">JavaScript</span>
-                <span className="tag">Twitter API v2</span>
-                <span className="tag green">Node.js</span>
-              </div>
-              <a href="https://github.com/SaitrishankAUCSE/twitter-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Amero-X LMS Platform</div>
-              <span className="project-badge">EDU</span>
-            </div>
-            <p className="project-desc">Full-featured Learning Management System with course creation, video streaming, progress tracking, and Stripe payments.</p>
-            <div className="project-bullets">
-              <div className="project-bullet">Next.js 13 app-router architecture with Prisma ORM and MySQL for scalable data management</div>
-              <div className="project-bullet">Mux video streaming integration for high-quality course content delivery</div>
-              <div className="project-bullet">Stripe payment processing for course purchases with webhook-based fulfillment</div>
+              <div className="project-bullet">Trained Random Forest model in Python on 20,600+ property records; achieved R² of 0.81 and MAE of $32,750 via feature engineering and hyperparameter tuning; served predictions via REST API endpoint</div>
+              <div className="project-bullet">Delivered full-stack platform with Next.js 15; integrated Google Maps API for location analytics and Firebase for authentication and data persistence</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
                 <span className="tag purple">Next.js</span>
-                <span className="tag">TypeScript</span>
-                <span className="tag">Prisma</span>
-                <span className="tag green">Stripe</span>
-                <span className="tag">Mux</span>
+                <span className="tag">Python</span>
+                <span className="tag">Scikit-Learn</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag purple">REST APIs</span>
               </div>
-              <a href="https://ameroxfoundation.com/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Amero-X LMS</div>
+              <span className="project-badge">EDU</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Delivered production LMS with 3-role access control (admin/instructor/student), video uploads, progress tracking, and completion certificates; integrated Stripe webhooks to automate enrolment on successful payment</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag">Stripe</span>
+                <span className="tag">SQL</span>
+                <span className="tag purple">REST APIs</span>
+              </div>
+              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Amero-X Airdrop Platform</div>
+              <span className="project-badge badge-purple">WEB3</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Contributed to gamified Web3 engagement platform serving 200+ users; implemented frontend mission components and Twitter API v2 social verification flow as part of a collaborative team</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag purple">REST APIs</span>
+                <span className="tag">Node.js</span>
+              </div>
+              <a href="http://airdrop.amerox.io/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
             </div>
           </div>
         </div>
@@ -604,51 +547,23 @@ export default function Portfolio() {
               <span className="timeline-date">Dec 2025 — Present</span>
               <span className="timeline-mode">Remote</span>
             </div>
-            <div className="timeline-role">Software Developer Intern</div>
+            <div className="timeline-role">Associate Software Engineer Intern</div>
             <div className="timeline-bullets">
-              <div className="timeline-bullet">Worked on a production-level Web3 platform supporting real-time user interactions and token-based engagement</div>
-              <div className="timeline-bullet">Improved platform reliability and ensured secure validation of user actions across multiple workflows</div>
-              <div className="timeline-bullet">Contributed to API-driven architecture and optimized data flow for dynamic user operations</div>
-              <div className="timeline-bullet">Handled real-time user interactions and backend workflows in a production-level Web3 platform</div>
+              <div className="timeline-bullet">Contributed to secure server-side REST API routes (Next.js + Node.js) connected to Firebase and Redis to validate quest completions and track XP, eliminating double-counting and front-end manipulation</div>
+              <div className="timeline-bullet">Worked on a gamified mission dashboard with 200+ registered users, tiered quests, and real-time leaderboard; integrated Twitter API v2 for social action verification and Firebase Auth + JWT for session management</div>
             </div>
           </div>
           <div className="timeline-item">
             <div className="timeline-dot dot-purple"></div>
             <div className="timeline-meta">
               <span className="timeline-company">Kalam Dream Labs (P) LTD</span>
-              <span className="timeline-date">Jun — Aug 2025</span>
+              <span className="timeline-date">Jun 2025 — Aug 2025</span>
               <span className="timeline-mode">On-site</span>
             </div>
             <div className="timeline-role">Machine Learning Intern</div>
             <div className="timeline-bullets">
-              <div className="timeline-bullet">Built and trained ML models using supervised and unsupervised learning techniques</div>
-              <div className="timeline-bullet">Performed data preprocessing, feature selection, and exploratory data analysis to improve model accuracy</div>
-              <div className="timeline-bullet">Implemented end-to-end ML pipelines including data handling, model training, evaluation, and deployment concepts</div>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-dot dot-green"></div>
-            <div className="timeline-meta">
-              <span className="timeline-company">SkillDzire</span>
-              <span className="timeline-date">Apr — Jun 2024</span>
-              <span className="timeline-mode">Remote</span>
-            </div>
-            <div className="timeline-role">Artificial Intelligence Intern</div>
-            <div className="timeline-bullets">
-              <div className="timeline-bullet">Learned fundamentals of AI including how models work and how they are trained on real datasets</div>
-              <div className="timeline-bullet">Practiced building simple AI projects using Python in practical environments</div>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-dot dot-muted"></div>
-            <div className="timeline-meta">
-              <span className="timeline-company">InAmigos Foundation (IAF)</span>
-              <span className="timeline-date">Jan 2026 — Present</span>
-              <span className="timeline-mode">Remote</span>
-            </div>
-            <div className="timeline-role">Social Media Marketing Intern</div>
-            <div className="timeline-bullets">
-              <div className="timeline-bullet">Reaching out to people on social media to support and promote meaningful causes</div>
+              <div className="timeline-bullet">Built Python data processing pipelines on 20,000+ records using Pandas and NumPy; applied foundational ML techniques (Random Forest, Logistic Regression, K-Means) via Scikit-Learn</div>
+              <div className="timeline-bullet">Improved model accuracy by 12% over baseline through preprocessing: categorical encoding, feature scaling, and outlier handling; evaluated models using precision, recall, and F1 metrics</div>
             </div>
           </div>
         </div>
@@ -685,25 +600,31 @@ export default function Portfolio() {
       <div className="divider"></div>
 
       {/* ── ACHIEVEMENTS ── */}
-      <section id="achievements" className="portfolio-section">
+      <section id="achievements" className="portfolio-section" style={{ overflow: 'hidden' }}>
         <p className="section-label reveal">06 — Achievements</p>
         <h2 className="section-title reveal">Certifications &amp; Awards</h2>
-        <div className="ach-grid reveal">
-          <div className="ach-card">
-            <div className="ach-icon">☁️</div>
-            <div>
-              <div className="ach-title">Google Cloud Skills Boost</div>
-              <div className="ach-period">Jun — Aug 2025</div>
-              <div className="ach-desc">Completed multiple hands-on labs and skill challenges on Google Cloud Platform. Achieved Diamond League by consistently solving advanced cloud-based tasks and quests.</div>
-            </div>
-          </div>
-          <div className="ach-card">
-            <div className="ach-icon">📊</div>
-            <div>
-              <div className="ach-title">Meta Blueprint Certification</div>
-              <div className="ach-period">Conversions API Gateway — November 2025</div>
-              <div className="ach-desc">Gained practical experience configuring and troubleshooting Meta Conversions API for server-side event tracking. Learned AI integration techniques to improve data accuracy and performance optimization.</div>
-            </div>
+        <div className="flex w-full items-center justify-center py-10 reveal">
+          <div className="w-full max-w-3xl flex justify-center ml-10">
+            <DisplayCards cards={[
+              {
+                icon: <Cloud className="size-4 text-[#ff5722]" />,
+                title: "Google Cloud",
+                description: "Diamond League",
+                date: "Aug 2025",
+                iconClassName: "text-[#ff5722]",
+                titleClassName: "text-[#ff5722]",
+                className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0"
+              },
+              {
+                icon: <TrendingUp className="size-4 text-[#ff5722]" />,
+                title: "Meta Blueprint",
+                description: "Conversions API Gateway",
+                date: "Nov 2025",
+                iconClassName: "text-[#ff5722]",
+                titleClassName: "text-[#ff5722]",
+                className: "[grid-area:stack] translate-x-12 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0"
+              }
+            ]} />
           </div>
         </div>
       </section>
