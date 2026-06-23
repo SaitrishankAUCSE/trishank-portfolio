@@ -342,7 +342,17 @@ export default function Portfolio() {
       {/* ── ABOUT ── */}
       <section id="about" className="portfolio-section">
         <p className="section-label reveal">01 — About</p>
-        <h2 className="section-title reveal">Who I Am</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Who I Am
+          </motion.span>
+        </h2>
         <div className="about-grid reveal">
           <div className="about-text">
             <p>I'm a <strong>Software Engineer</strong> and final-year CS student at Andhra University College of Engineering (2022–2026), with hands-on internship experience delivering production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
@@ -375,7 +385,17 @@ export default function Portfolio() {
       {/* ── SKILLS ── */}
       <section id="skills" className="portfolio-section">
         <p className="section-label reveal">02 — Skills</p>
-        <h2 className="section-title reveal">Technical Arsenal</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Technical Arsenal
+          </motion.span>
+        </h2>
         <div className="skills-grid reveal">
           <div className="skill-group">
             <div className="skill-group-icon">🐍</div>
@@ -448,7 +468,17 @@ export default function Portfolio() {
       {/* ── PROJECTS ── */}
       <section id="projects" className="portfolio-section">
         <p className="section-label reveal">03 — Projects</p>
-        <h2 className="section-title reveal">Selected Artifacts</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Selected Artifacts
+          </motion.span>
+        </h2>
         <div className="projects-grid reveal">
           <div className="project-card">
             <div className="project-header">
@@ -538,7 +568,17 @@ export default function Portfolio() {
       {/* ── EXPERIENCE ── */}
       <section id="experience" className="portfolio-section">
         <p className="section-label reveal">04 — Experience</p>
-        <h2 className="section-title reveal">Where I've Worked</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Where I've Worked
+          </motion.span>
+        </h2>
         <div className="timeline reveal">
           <div className="timeline-item">
             <div className="timeline-dot dot-blue"></div>
@@ -574,7 +614,17 @@ export default function Portfolio() {
       {/* ── EDUCATION ── */}
       <section id="education" className="portfolio-section">
         <p className="section-label reveal">05 — Education</p>
-        <h2 className="section-title reveal">Academic Background</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Academic Background
+          </motion.span>
+        </h2>
         <div className="edu-grid reveal">
           <div className="edu-card">
             <div className="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
@@ -602,7 +652,17 @@ export default function Portfolio() {
       {/* ── ACHIEVEMENTS ── */}
       <section id="achievements" className="portfolio-section" style={{ overflow: 'hidden' }}>
         <p className="section-label reveal">06 — Achievements</p>
-        <h2 className="section-title reveal">Certifications &amp; Awards</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Certifications &amp; Awards
+          </motion.span>
+        </h2>
         <div className="flex w-full items-center justify-center py-10 reveal">
           <div className="w-full max-w-3xl flex justify-center ml-10">
             <DisplayCards cards={[
@@ -634,7 +694,17 @@ export default function Portfolio() {
       {/* ── CONTACT ── */}
       <section id="contact" className="portfolio-section">
         <p className="section-label reveal" style={{ textAlign: 'center' }}>07 — Contact</p>
-        <h2 className="section-title reveal" style={{ textAlign: 'center' }}>Let's Connect</h2>
+        <h2 className="section-title reveal" style={{ overflow: "hidden", textAlign: 'center' }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Let's Connect
+          </motion.span>
+        </h2>
         <div className="contact-inner reveal">
           <p className="contact-sub">Open to internship opportunities, collaborations, and interesting projects. Feel free to reach out — I respond quickly!</p>
           <div className="contact-links">

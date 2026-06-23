@@ -47,25 +47,34 @@ interface DisplayCardsProps {
 }
 
 export default function DisplayCards({ cards }: DisplayCardsProps) {
-  const defaultCards = [
-    {
-      className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration:700 hover:grayscale-0 before:left-0 before:top-0",
-    },
-    {
-      className: "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration:700 hover:grayscale-0 before:left-0 before:top-0",
-    },
-    {
-      className: "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
-    },
+  const defaultCards: DisplayCardProps[] = [
+    { title: "Featured", description: "Discover amazing content" },
+    { title: "Popular", description: "Trending this week" },
+    { title: "New", description: "Latest updates and features" },
   ];
 
   const displayCards = cards || defaultCards;
 
+  const stackClasses = [
+    "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+    "[grid-area:stack] translate-x-12 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+    "[grid-area:stack] translate-x-24 translate-y-20 hover:translate-y-5 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+    "[grid-area:stack] translate-x-36 translate-y-30 hover:translate-y-10",
+  ];
+
   return (
     <div className="grid [grid-template-areas:'stack'] place-items-center opacity-100 animate-in fade-in-0 duration-700">
-      {displayCards.map((cardProps, index) => (
-        <DisplayCard key={index} {...cardProps} />
-      ))}
+      {displayCards.map((cardProps, index) => {
+        // Automatically inject the stack class and merge with any existing className
+        const autoClass = stackClasses[index % stackClasses.length];
+        return (
+          <DisplayCard 
+            key={index} 
+            {...cardProps} 
+            className={cn(autoClass, cardProps.className)} 
+          />
+        );
+      })}
     </div>
   );
 }
