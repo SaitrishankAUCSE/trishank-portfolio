@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import './portfolio.css';
 import { ExpandableTabs } from './components/ui/expandable-tabs';
-import { ShaderBackground } from './components/ui/animated-shader-background';
+import { MeshGradient } from '@paper-design/shaders-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Home, User, Wrench, FolderGit2, Briefcase, Mail,
@@ -243,14 +243,19 @@ export default function Portfolio() {
       {/* ── SCROLL PROGRESS BAR ── */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
-      {/* ── SHADER BACKGROUND (25% opacity) ── */}
-      <ShaderBackground opacity={0.25} />
+      {/* ── MESH GRADIENT BACKGROUND ── */}
+      <MeshGradient
+        className="!fixed inset-0 w-full h-full"
+        style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.3 }}
+        colors={['#000000', '#1a1a1a', '#333333', '#ffffff']}
+        speed={0.8}
+      />
 
       {/* ── EXPANDABLE TABS NAV ── */}
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-auto">
         <ExpandableTabs
           tabs={navTabs}
-          activeColor="text-[#c9a96e]"
+          activeColor="text-[#ff5722]"
         />
       </div>
 
@@ -261,7 +266,7 @@ export default function Portfolio() {
           <div className="hero-content">
             <p className="hero-eyebrow">// Crafting digital architectures.</p>
 
-            <h1 className="hero-name" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="hero-name" style={{ fontFamily: "'Playfair Display', serif", color: '#ffffff' }}>
               Venkata Sai<br />
               <span className="highlight gradient-text" style={{ fontFamily: "'Playfair Display', serif" }}>Trishank Kamma</span>
             </h1>
@@ -272,7 +277,7 @@ export default function Portfolio() {
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold text-[#c9a96e]"
+                    className="absolute font-semibold text-[#ff5722]"
                     style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1rem', letterSpacing: '0.05em' }}
                     initial={{ opacity: 0, y: -40 }}
                     transition={{ type: 'spring', stiffness: 50 }}

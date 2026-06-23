@@ -74,14 +74,14 @@ export function ExpandableTabs({
   };
 
   const Separator = () => (
-    <div className="mx-1 h-[24px] w-[1.2px] bg-[rgba(201,169,110,0.2)]" aria-hidden="true" />
+    <div className="mx-1 h-[24px] w-[1.2px] bg-[rgba(255,87,34,0.2)]" aria-hidden="true" />
   );
 
   return (
     <div
       ref={outsideClickRef}
       className={cn(
-        "flex flex-wrap items-center gap-2 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(14,14,24,0.85)] p-1 shadow-lg backdrop-blur-xl",
+        "flex flex-wrap items-center gap-2 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(0,0,0,0.85)] p-1 shadow-lg backdrop-blur-xl",
         className
       )}
     >
@@ -103,8 +103,8 @@ export function ExpandableTabs({
             className={cn(
               "relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300",
               selected === index
-                ? cn("bg-[rgba(201,169,110,0.12)]", activeColor)
-                : "text-[#5e5e72] hover:bg-[rgba(201,169,110,0.06)] hover:text-[#b0b0be]"
+                ? cn("bg-[rgba(255,87,34,0.12)]", activeColor)
+                : "text-[#5e5e72] hover:bg-[rgba(255,87,34,0.06)] hover:text-[#b0b0be]"
             )}
           >
             <Icon size={18} />
