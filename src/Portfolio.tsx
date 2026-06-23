@@ -1,10 +1,116 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import './portfolio.css';
 import { PillBase } from './components/ui/3d-adaptive-navigation-bar';
 import { BeamsBackground } from './components/ui/beams-background';
+import { motion, AnimatePresence } from 'framer-motion';
+
+/* ── Animated counter hook ── */
+function useCountUp(end: number, duration = 1800, decimals = 0, suffix = '') {
+  const [value, setValue] = useState('0');
+  const ref = useRef<HTMLDivElement>(null);
+  const counted = useRef(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !counted.current) {
+          counted.current = true;
+          const start = performance.now();
+          const step = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            const current = eased * end;
+            setValue(current.toFixed(decimals) + suffix);
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end, duration, decimals, suffix]);
+
+  return { ref, value };
+}
+
+/* ── Circular score ring component ── */
+function ScoreRing({ value, max, label }: { value: number; max: number; label: string }) {
+  const percent = (value / max) * 100;
+  const circumference = 2 * Math.PI * 25; // r=25
+  const offset = circumference - (percent / 100) * circumference;
+  const ref = useRef<SVGCircleElement>(null);
+  const observed = useRef(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const el = ref.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !observed.current) {
+          observed.current = true;
+          el.style.strokeDashoffset = `${offset}`;
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [offset]);
+
+  return (
+    <div className="edu-score-ring">
+      <svg viewBox="0 0 56 56" width="56" height="56">
+        <circle className="ring-bg" cx="28" cy="28" r="25" />
+        <circle
+          ref={ref}
+          className="ring-fill"
+          cx="28"
+          cy="28"
+          r="25"
+          style={{ strokeDasharray: circumference, strokeDashoffset: circumference }}
+        />
+      </svg>
+      <div className="edu-score-info">
+        <div className="edu-score">{value}{max === 100 ? '%' : ''}</div>
+        <div className="edu-score-label">{label}</div>
+      </div>
+    </div>
+  );
+}
 
 export default function Portfolio() {
+  const [loading, setLoading] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  /* ── Count-up stats ── */
+  const cgpa = useCountUp(8.12, 1800, 2);
+  const internships = useCountUp(3, 1200, 0, '+');
+  const projects = useCountUp(6, 1200, 0, '+');
+
+  /* ── Scroll progress bar ── */
+  const handleScroll = useCallback(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+  }, []);
+
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  /* ── Page loader ── */
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+
     /* ── Scroll reveal ── */
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -88,12 +194,30 @@ export default function Portfolio() {
             const y = ((ev.clientY - rect.top) / rect.height) * 100;
             target.style.setProperty('--mx', `${x}%`);
             target.style.setProperty('--my', `${y}%`);
-            target.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(201,169,110,0.03) 0%, var(--card) 60%)`;
+            target.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(201,169,110,0.04) 0%, var(--surface-1) 60%)`;
           });
           card.addEventListener('mouseleave', () => {
             (card as HTMLElement).style.background = '';
           });
         });
+    }
+
+    /* ── 3D tilt on project cards (desktop only) ── */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll('.project-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const ev = e as MouseEvent;
+          const target = card as HTMLElement;
+          const rect = target.getBoundingClientRect();
+          const x = (ev.clientX - rect.left) / rect.width - 0.5;
+          const y = (ev.clientY - rect.top) / rect.height - 0.5;
+          target.style.transform = `translateY(-8px) perspective(800px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+        });
+        card.addEventListener('mouseleave', (e) => {
+          const target = (e as MouseEvent).currentTarget as HTMLElement;
+          target.style.transform = '';
+        });
+      });
     }
 
     /* ── Scroll to top button ── */
@@ -108,10 +232,34 @@ export default function Portfolio() {
       };
       window.addEventListener('scroll', onScroll, { passive: true });
     }
-  }, []);
+  }, [loading]);
 
   return (
     <>
+      {/* ── PAGE LOADER ── */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            className="page-loader"
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            <motion.div
+              className="loader-initials"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
+              TSK
+            </motion.div>
+            <div className="loader-bar" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── SCROLL PROGRESS BAR ── */}
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
+
       <BeamsBackground />
 
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-auto">
@@ -161,7 +309,15 @@ export default function Portfolio() {
           {/* Right: Portrait */}
           <div className="hero-visual reveal">
             <div className="hero-glow" />
-            <img src="/assets/portrait.png" alt="Artistic Portrait" className="hero-image" />
+            <div className="hero-portrait-wrapper">
+              <div className="hero-portrait-ring" />
+              <div className="hero-portrait-ring-inner" />
+              <img src="/assets/portrait.png" alt="Artistic Portrait" className="hero-image" />
+            </div>
+            <div className="hero-status" style={{ position: 'absolute', bottom: '-30px' }}>
+              <span className="status-dot" />
+              Available for opportunities
+            </div>
           </div>
         </div>
       </section>
@@ -179,16 +335,16 @@ export default function Portfolio() {
             <p>Currently serving as a <strong>Software Developer Intern at ANACT INFOTECH</strong>, working on API-driven Web3 applications with real-time user interactions and scalable backend workflows.</p>
           </div>
           <div className="about-stats">
-            <div className="stat-card">
-              <div className="stat-num">8.12</div>
+            <div className="stat-card" ref={cgpa.ref}>
+              <div className="stat-num">{cgpa.value}</div>
               <div className="stat-label">CGPA — B.Tech CSE</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-num">3+</div>
+            <div className="stat-card" ref={internships.ref}>
+              <div className="stat-num">{internships.value}</div>
               <div className="stat-label">Internships Completed</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-num">6+</div>
+            <div className="stat-card" ref={projects.ref}>
+              <div className="stat-num">{projects.value}</div>
               <div className="stat-label">Production Projects</div>
             </div>
             <div className="stat-card">
@@ -221,61 +377,61 @@ export default function Portfolio() {
             <div className="skill-tags">
               <span className="tag purple">React.js</span>
               <span className="tag purple">Next.js</span>
-              <span className="tag purple">Responsive Web Design</span>
+              <span className="tag">Responsive Web Design</span>
             </div>
           </div>
 
           <div className="skill-group">
-            <div className="skill-group-icon">🤖</div>
-            <div className="skill-group-title">Data Science &amp; Machine Learning</div>
+            <div className="skill-group-icon">📊</div>
+            <div className="skill-group-title">Data Science & ML</div>
             <div className="skill-tags">
               <span className="tag">Pandas</span>
               <span className="tag">NumPy</span>
-              <span className="tag">Random Forest</span>
-              <span className="tag">Logistic Regression</span>
+              <span className="tag purple">Random Forest</span>
+              <span className="tag purple">Logistic Regression</span>
               <span className="tag">K-Means</span>
               <span className="tag">Feature Engineering</span>
             </div>
           </div>
 
           <div className="skill-group">
-            <div className="skill-group-icon">🔗</div>
-            <div className="skill-group-title">Backend &amp; APIs</div>
+            <div className="skill-group-icon">🔧</div>
+            <div className="skill-group-title">Backend & APIs</div>
             <div className="skill-tags">
-              <span className="tag green">REST API Design</span>
+              <span className="tag">REST API Design</span>
               <span className="tag green">Firebase Auth</span>
               <span className="tag green">Firebase Firestore</span>
-              <span className="tag green">Realtime Database</span>
-              <span className="tag green">NoSQL</span>
+              <span className="tag">Realtime Database</span>
+              <span className="tag">NoSQL</span>
             </div>
           </div>
 
           <div className="skill-group">
-            <div className="skill-group-icon">🌐</div>
+            <div className="skill-group-icon">🔗</div>
             <div className="skill-group-title">Web3 Technologies</div>
             <div className="skill-tags">
               <span className="tag purple">ethers.js</span>
-              <span className="tag purple">Web3Modal</span>
-              <span className="tag purple">Wallet Authentication</span>
+              <span className="tag">Web3Modal</span>
+              <span className="tag">Wallet Authentication</span>
               <span className="tag purple">Token-Based Systems</span>
             </div>
           </div>
 
           <div className="skill-group">
-            <div className="skill-group-icon">🛠️</div>
-            <div className="skill-group-title">Tools, CI/CD &amp; Deployment</div>
+            <div className="skill-group-icon">🚀</div>
+            <div className="skill-group-title">Tools, CI/CD & Deployment</div>
             <div className="skill-tags">
-              <span className="tag green">Git</span>
-              <span className="tag green">GitHub</span>
+              <span className="tag">Git</span>
+              <span className="tag">GitHub</span>
               <span className="tag green">GitHub Actions</span>
               <span className="tag green">Vercel</span>
-              <span className="tag green">Google Cloud</span>
-              <span className="tag green">VS Code</span>
+              <span className="tag">Google Cloud</span>
+              <span className="tag">VS Code</span>
             </div>
           </div>
 
           <div className="skill-group">
-            <div className="skill-group-icon">📐</div>
+            <div className="skill-group-icon">🧠</div>
             <div className="skill-group-title">Core CS Concepts</div>
             <div className="skill-tags">
               <span className="tag">DSA</span>
@@ -295,7 +451,7 @@ export default function Portfolio() {
         <h2 className="section-title reveal">Selected Artifacts</h2>
         <div className="projects-grid reveal">
 
-          {/* 1 — Idea Probe App */}
+          {/* 1 — Idea Probe App (FEATURED) */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Idea Probe App</div>
@@ -312,8 +468,8 @@ export default function Portfolio() {
                 <span className="tag">TypeScript</span>
                 <span className="tag green">Vite</span>
               </div>
-              <a href="https://idea-probe-app.vercel.app/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
-              <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://idea-probe-app.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
 
@@ -337,8 +493,8 @@ export default function Portfolio() {
                 <span className="tag">ethers.js</span>
                 <span className="tag">Twitter API</span>
               </div>
-              <a href="http://airdrop.amerox.io/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
-              <a href="https://github.com/SaitrishankAUCSE/amerox-airdrop" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="http://airdrop.amerox.io/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/amerox-airdrop" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
 
@@ -361,14 +517,12 @@ export default function Portfolio() {
                 <span className="tag purple">Pandas</span>
                 <span className="tag purple">NumPy</span>
               </div>
-              <a href="https://houseprice.vercel.app/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
-              <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://houseprice.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
 
-
-
-          {/* 5 — Airdrop Game */}
+          {/* 4 — Airdrop Game */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Airdrop Game Engine</div>
@@ -387,11 +541,11 @@ export default function Portfolio() {
                 <span className="tag">Web3</span>
                 <span className="tag green">Firebase</span>
               </div>
-              <a href="https://github.com/SaitrishankAUCSE/airdrop-game" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://github.com/SaitrishankAUCSE/airdrop-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
 
-          {/* 6 — Twitter Game */}
+          {/* 5 — Twitter Game */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Twitter Social Engagement Game</div>
@@ -408,11 +562,11 @@ export default function Portfolio() {
                 <span className="tag">Twitter API v2</span>
                 <span className="tag green">Node.js</span>
               </div>
-              <a href="https://github.com/SaitrishankAUCSE/twitter-game" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://github.com/SaitrishankAUCSE/twitter-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
 
-          {/* 7 — Amero-X LMS */}
+          {/* 6 — Amero-X LMS */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Amero-X LMS Platform</div>
@@ -432,11 +586,10 @@ export default function Portfolio() {
                 <span className="tag green">Stripe</span>
                 <span className="tag">Mux</span>
               </div>
-              <a href="https://ameroxfoundation.com/" target="_blank" rel="noreferrer" className="project-link">Live Demo ↗</a>
-              <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link">GitHub ↗</a>
+              <a href="https://ameroxfoundation.com/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
 
         </div>
       </section>
@@ -519,24 +672,21 @@ export default function Portfolio() {
             <div className="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
             <div className="edu-school">Andhra University College of Engineering</div>
             <div className="edu-year">2022 — 2026 · Visakhapatnam</div>
-            <div className="edu-score">8.12</div>
-            <div className="edu-score-label">CGPA</div>
+            <ScoreRing value={8.12} max={10} label="CGPA" />
           </div>
 
           <div className="edu-card">
             <div className="edu-degree">Intermediate — Class XII</div>
             <div className="edu-school">Sri Gayatri Junior College</div>
             <div className="edu-year">2020 — 2022 · Visakhapatnam</div>
-            <div className="edu-score">73.9%</div>
-            <div className="edu-score-label">Percentage</div>
+            <ScoreRing value={73.9} max={100} label="Percentage" />
           </div>
 
           <div className="edu-card">
             <div className="edu-degree">SSC — Class X (ICSE)</div>
             <div className="edu-school">St. Aloysius Anglo Indian High School</div>
             <div className="edu-year">2020 · Visakhapatnam</div>
-            <div className="edu-score">63.2%</div>
-            <div className="edu-score-label">Percentage</div>
+            <ScoreRing value={63.2} max={100} label="Percentage" />
           </div>
         </div>
       </section>
