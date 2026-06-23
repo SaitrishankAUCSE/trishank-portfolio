@@ -1,8 +1,12 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import './portfolio.css';
-import { PillBase } from './components/ui/3d-adaptive-navigation-bar';
-import { BeamsBackground } from './components/ui/beams-background';
+import { ExpandableTabs } from './components/ui/expandable-tabs';
+import { ShaderBackground } from './components/ui/animated-shader-background';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Home, User, Wrench, FolderGit2, Briefcase, Mail,
+  GraduationCap
+} from 'lucide-react';
 
 /* ── Animated counter hook ── */
 function useCountUp(end: number, duration = 1800, decimals = 0, suffix = '') {
@@ -19,7 +23,7 @@ function useCountUp(end: number, duration = 1800, decimals = 0, suffix = '') {
           const start = performance.now();
           const step = (now: number) => {
             const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            const eased = 1 - Math.pow(1 - progress, 3);
             const current = eased * end;
             setValue(current.toFixed(decimals) + suffix);
             if (progress < 1) requestAnimationFrame(step);
@@ -39,7 +43,7 @@ function useCountUp(end: number, duration = 1800, decimals = 0, suffix = '') {
 /* ── Circular score ring component ── */
 function ScoreRing({ value, max, label }: { value: number; max: number; label: string }) {
   const percent = (value / max) * 100;
-  const circumference = 2 * Math.PI * 25; // r=25
+  const circumference = 2 * Math.PI * 25;
   const offset = circumference - (percent / 100) * circumference;
   const ref = useRef<SVGCircleElement>(null);
   const observed = useRef(false);
@@ -84,6 +88,20 @@ function ScoreRing({ value, max, label }: { value: number; max: number; label: s
 export default function Portfolio() {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [titleNumber, setTitleNumber] = useState(0);
+
+  const titles = useMemo(
+    () => ['Full Stack Developer', 'Visual Architect', 'ML Engineer', 'Web3 Builder'],
+    []
+  );
+
+  /* ── Rotating title effect ── */
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1));
+    }, 2500);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   /* ── Count-up stats ── */
   const cgpa = useCountUp(8.12, 1800, 2);
@@ -108,6 +126,19 @@ export default function Portfolio() {
     return () => clearTimeout(timer);
   }, []);
 
+  /* ── Nav tabs config ── */
+  const navTabs = useMemo(() => [
+    { title: 'Home', icon: Home, href: '#hero' },
+    { title: 'About', icon: User, href: '#about' },
+    { title: 'Skills', icon: Wrench, href: '#skills' },
+    { type: 'separator' as const },
+    { title: 'Projects', icon: FolderGit2, href: '#projects' },
+    { title: 'Experience', icon: Briefcase, href: '#experience' },
+    { type: 'separator' as const },
+    { title: 'Education', icon: GraduationCap, href: '#education' },
+    { title: 'Contact', icon: Mail, href: '#contact' },
+  ], []);
+
   useEffect(() => {
     if (loading) return;
 
@@ -127,15 +158,7 @@ export default function Portfolio() {
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
     /* ── Staggered children in grids ── */
-    const staggerSelectors = [
-      '.skills-grid',
-      '.projects-grid',
-      '.about-stats',
-      '.edu-grid',
-      '.ach-grid',
-    ];
-
-    staggerSelectors.forEach((sel) => {
+    ['.skills-grid', '.projects-grid', '.about-stats', '.edu-grid', '.ach-grid'].forEach((sel) => {
       const grid = document.querySelector(sel);
       if (!grid) return;
       Array.from(grid.children).forEach((child, i) => {
@@ -150,37 +173,6 @@ export default function Portfolio() {
       revealObserver.observe(item);
     });
 
-    /* ── Typed cursor effect on hero eyebrow ── */
-    const el = document.querySelector('.hero-eyebrow');
-    if (el) {
-      const text = el.textContent || '';
-      el.textContent = '';
-      (el as HTMLElement).style.opacity = '1';
-      (el as HTMLElement).style.animation = 'none';
-
-      let i = 0;
-      const cursor = document.createElement('span');
-      cursor.textContent = '|';
-      cursor.style.cssText = 'animation: blink 0.7s step-end infinite; color: var(--accent);';
-      el.appendChild(cursor);
-
-      if (!document.getElementById('blink-style')) {
-        const style = document.createElement('style');
-        style.id = 'blink-style';
-        style.textContent = '@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }';
-        document.head.appendChild(style);
-      }
-
-      const interval = setInterval(() => {
-        el.insertBefore(document.createTextNode(text[i] || ''), cursor);
-        i++;
-        if (i >= text.length) {
-          clearInterval(interval);
-          setTimeout(() => cursor.remove(), 1200);
-        }
-      }, 45);
-    }
-
     /* ── Cursor glow on cards (desktop only) ── */
     if (window.matchMedia('(pointer: fine)').matches) {
       document
@@ -192,18 +184,14 @@ export default function Portfolio() {
             const rect = target.getBoundingClientRect();
             const x = ((ev.clientX - rect.left) / rect.width) * 100;
             const y = ((ev.clientY - rect.top) / rect.height) * 100;
-            target.style.setProperty('--mx', `${x}%`);
-            target.style.setProperty('--my', `${y}%`);
             target.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(201,169,110,0.04) 0%, var(--surface-1) 60%)`;
           });
           card.addEventListener('mouseleave', () => {
             (card as HTMLElement).style.background = '';
           });
         });
-    }
 
-    /* ── 3D tilt on project cards (desktop only) ── */
-    if (window.matchMedia('(pointer: fine)').matches) {
+      /* ── 3D tilt on project cards ── */
       document.querySelectorAll('.project-card').forEach((card) => {
         card.addEventListener('mousemove', (e) => {
           const ev = e as MouseEvent;
@@ -214,8 +202,7 @@ export default function Portfolio() {
           target.style.transform = `translateY(-8px) perspective(800px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
         });
         card.addEventListener('mouseleave', (e) => {
-          const target = (e as MouseEvent).currentTarget as HTMLElement;
-          target.style.transform = '';
+          ((e as MouseEvent).currentTarget as HTMLElement).style.transform = '';
         });
       });
     }
@@ -224,11 +211,7 @@ export default function Portfolio() {
     const scrollBtn = document.querySelector('.scroll-top-btn');
     if (scrollBtn) {
       const onScroll = () => {
-        if (window.scrollY > 600) {
-          scrollBtn.classList.add('visible');
-        } else {
-          scrollBtn.classList.remove('visible');
-        }
+        scrollBtn.classList.toggle('visible', window.scrollY > 600);
       };
       window.addEventListener('scroll', onScroll, { passive: true });
     }
@@ -260,10 +243,15 @@ export default function Portfolio() {
       {/* ── SCROLL PROGRESS BAR ── */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
-      <BeamsBackground />
+      {/* ── SHADER BACKGROUND (50% opacity) ── */}
+      <ShaderBackground opacity={0.5} />
 
+      {/* ── EXPANDABLE TABS NAV ── */}
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-auto">
-        <PillBase />
+        <ExpandableTabs
+          tabs={navTabs}
+          activeColor="text-[#c9a96e]"
+        />
       </div>
 
       {/* ── HERO ── */}
@@ -273,10 +261,32 @@ export default function Portfolio() {
           <div className="hero-content">
             <p className="hero-eyebrow">// Crafting digital architectures.</p>
 
-            <h1 className="hero-name">
+            <h1 className="hero-name" style={{ fontFamily: "'Playfair Display', serif" }}>
               Venkata Sai<br />
-              <span className="highlight gradient-text">Trishank Kamma</span>
+              <span className="highlight gradient-text" style={{ fontFamily: "'Playfair Display', serif" }}>Trishank Kamma</span>
             </h1>
+
+            {/* Animated rotating role */}
+            <div className="hero-role-animated">
+              <span className="relative flex w-full justify-start overflow-hidden h-[1.8em]">
+                {titles.map((title, index) => (
+                  <motion.span
+                    key={index}
+                    className="absolute font-semibold text-[#c9a96e]"
+                    style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '1rem', letterSpacing: '0.05em' }}
+                    initial={{ opacity: 0, y: -40 }}
+                    transition={{ type: 'spring', stiffness: 50 }}
+                    animate={
+                      titleNumber === index
+                        ? { y: 0, opacity: 1 }
+                        : { y: titleNumber > index ? -50 : 50, opacity: 0 }
+                    }
+                  >
+                    {'< '}{title}{' />'}
+                  </motion.span>
+                ))}
+              </span>
+            </div>
 
             <p className="hero-role">
               <strong>Full Stack Developer</strong> &amp; <strong>Visual Architect</strong><br />
@@ -370,7 +380,6 @@ export default function Portfolio() {
               <span className="tag">JavaScript</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">⚛️</div>
             <div className="skill-group-title">Frontend Development</div>
@@ -380,7 +389,6 @@ export default function Portfolio() {
               <span className="tag">Responsive Web Design</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">📊</div>
             <div className="skill-group-title">Data Science & ML</div>
@@ -393,7 +401,6 @@ export default function Portfolio() {
               <span className="tag">Feature Engineering</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">🔧</div>
             <div className="skill-group-title">Backend & APIs</div>
@@ -405,7 +412,6 @@ export default function Portfolio() {
               <span className="tag">NoSQL</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">🔗</div>
             <div className="skill-group-title">Web3 Technologies</div>
@@ -416,7 +422,6 @@ export default function Portfolio() {
               <span className="tag purple">Token-Based Systems</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">🚀</div>
             <div className="skill-group-title">Tools, CI/CD & Deployment</div>
@@ -429,7 +434,6 @@ export default function Portfolio() {
               <span className="tag">VS Code</span>
             </div>
           </div>
-
           <div className="skill-group">
             <div className="skill-group-icon">🧠</div>
             <div className="skill-group-title">Core CS Concepts</div>
@@ -450,8 +454,6 @@ export default function Portfolio() {
         <p className="section-label reveal">03 — Projects</p>
         <h2 className="section-title reveal">Selected Artifacts</h2>
         <div className="projects-grid reveal">
-
-          {/* 1 — Idea Probe App (FEATURED) */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Idea Probe App</div>
@@ -472,8 +474,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
-          {/* 2 — Amerox Airdrop */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Amerox Airdrop Platform</div>
@@ -497,8 +497,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/amerox-airdrop" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
-          {/* 3 — House Price Prediction */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">House Price Prediction System</div>
@@ -521,8 +519,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
-          {/* 4 — Airdrop Game */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Airdrop Game Engine</div>
@@ -544,8 +540,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/airdrop-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
-          {/* 5 — Twitter Game */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Twitter Social Engagement Game</div>
@@ -565,8 +559,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/twitter-game" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
-          {/* 6 — Amero-X LMS */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">Amero-X LMS Platform</div>
@@ -590,7 +582,6 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -616,7 +607,6 @@ export default function Portfolio() {
               <div className="timeline-bullet">Handled real-time user interactions and backend workflows in a production-level Web3 platform</div>
             </div>
           </div>
-
           <div className="timeline-item">
             <div className="timeline-dot dot-purple"></div>
             <div className="timeline-meta">
@@ -631,7 +621,6 @@ export default function Portfolio() {
               <div className="timeline-bullet">Implemented end-to-end ML pipelines including data handling, model training, evaluation, and deployment concepts</div>
             </div>
           </div>
-
           <div className="timeline-item">
             <div className="timeline-dot dot-green"></div>
             <div className="timeline-meta">
@@ -645,7 +634,6 @@ export default function Portfolio() {
               <div className="timeline-bullet">Practiced building simple AI projects using Python in practical environments</div>
             </div>
           </div>
-
           <div className="timeline-item">
             <div className="timeline-dot dot-muted"></div>
             <div className="timeline-meta">
@@ -674,14 +662,12 @@ export default function Portfolio() {
             <div className="edu-year">2022 — 2026 · Visakhapatnam</div>
             <ScoreRing value={8.12} max={10} label="CGPA" />
           </div>
-
           <div className="edu-card">
             <div className="edu-degree">Intermediate — Class XII</div>
             <div className="edu-school">Sri Gayatri Junior College</div>
             <div className="edu-year">2020 — 2022 · Visakhapatnam</div>
             <ScoreRing value={73.9} max={100} label="Percentage" />
           </div>
-
           <div className="edu-card">
             <div className="edu-degree">SSC — Class X (ICSE)</div>
             <div className="edu-school">St. Aloysius Anglo Indian High School</div>
@@ -706,7 +692,6 @@ export default function Portfolio() {
               <div className="ach-desc">Completed multiple hands-on labs and skill challenges on Google Cloud Platform. Achieved Diamond League by consistently solving advanced cloud-based tasks and quests.</div>
             </div>
           </div>
-
           <div className="ach-card">
             <div className="ach-icon">📊</div>
             <div>
@@ -752,7 +737,6 @@ export default function Portfolio() {
         <span>© {new Date().getFullYear()} VENKATA SAI TRISHANK KAMMA &nbsp;·&nbsp; VISAKHAPATNAM, INDIA &nbsp;·&nbsp; DESIGNED & BUILT WITH ♥</span>
       </footer>
 
-      {/* Scroll to top */}
       <button className="scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">
         ↑
       </button>
