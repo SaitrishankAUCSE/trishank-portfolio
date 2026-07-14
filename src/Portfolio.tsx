@@ -92,7 +92,7 @@ export default function Portfolio() {
   const [titleNumber, setTitleNumber] = useState(0);
 
   const titles = useMemo(
-    () => ['Full Stack Developer', 'Visual Architect', 'ML Engineer', 'Web3 Builder'],
+    () => ['Software Engineer', 'Python Developer', 'AI Enthusiast'],
     []
   );
 
@@ -401,63 +401,37 @@ export default function Portfolio() {
             <div className="skill-group-icon">🐍</div>
             <div className="skill-group-title">Languages</div>
             <div className="skill-tags">
-              <span className="tag purple">Python (strong)</span>
-              <span className="tag">JavaScript (basic)</span>
-              <span className="tag">SQL (basic)</span>
-              <span className="tag">HTML</span>
-              <span className="tag">CSS (basic)</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">⚛️</div>
-            <div className="skill-group-title">Frontend & Frameworks</div>
-            <div className="skill-tags">
-              <span className="tag purple">Next.js</span>
-              <span className="tag">React.js (basic)</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">🗄️</div>
-            <div className="skill-group-title">Databases & Backend</div>
-            <div className="skill-tags">
-              <span className="tag purple">Firebase</span>
-              <span className="tag">Firestore</span>
-              <span className="tag">Realtime DB</span>
-              <span className="tag green">Auth</span>
-              <span className="tag">SQL (basic)</span>
-              <span className="tag purple">REST APIs</span>
+              <span className="tag purple">Python</span>
+              <span className="tag">JavaScript</span>
+              <span className="tag">SQL</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">🧠</div>
             <div className="skill-group-title">Core CS</div>
             <div className="skill-tags">
-              <span className="tag">Data Structures & Algorithms</span>
-              <span className="tag">Object-Oriented Programming</span>
-              <span className="tag purple">Debugging</span>
-            </div>
-          </div>
-          <div className="skill-group">
-            <div className="skill-group-icon">🤖</div>
-            <div className="skill-group-title">Machine Learning & AI</div>
-            <div className="skill-tags">
-              <span className="tag purple">Scikit-Learn</span>
-              <span className="tag">Pandas</span>
-              <span className="tag">NumPy</span>
-              <span className="tag">Prompt Engineering</span>
-              <span className="tag green">AI Tools (Claude, ChatGPT, Gemini, Cursor)</span>
+              <span className="tag purple">Data Structures & Algorithms</span>
+              <span className="tag">OOP</span>
+              <span className="tag">DBMS</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">🛠️</div>
-            <div className="skill-group-title">Tools & Soft Skills</div>
+            <div className="skill-group-title">Tools</div>
             <div className="skill-tags">
               <span className="tag">Git</span>
               <span className="tag">GitHub</span>
+              <span className="tag green">Firebase</span>
               <span className="tag">Vercel</span>
-              <span className="tag">VS Code</span>
-              <span className="tag purple">Problem Solving</span>
-              <span className="tag">Leadership</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">💡</div>
+            <div className="skill-group-title">Interests</div>
+            <div className="skill-tags">
+              <span className="tag purple">AI/ML</span>
+              <span className="tag">Backend Development</span>
+              <span className="tag">Software Engineering</span>
             </div>
           </div>
         </div>
@@ -507,7 +481,7 @@ export default function Portfolio() {
               <span className="project-badge">ML</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Trained Random Forest model in Python on 20,600+ property records; achieved R² of 0.81 and MAE of $32,750 via feature engineering and hyperparameter tuning; served predictions via REST API endpoint</div>
+              <div className="project-bullet">Built ML application trained on 20,600+ housing records achieving 81% prediction accuracy</div>
               <div className="project-bullet">Delivered full-stack platform with Next.js 15; integrated Google Maps API for location analytics and Firebase for authentication and data persistence</div>
             </div>
             <div className="project-footer">
@@ -528,7 +502,8 @@ export default function Portfolio() {
               <span className="project-badge">EDU</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Delivered production LMS with 3-role access control (admin/instructor/student), video uploads, progress tracking, and completion certificates; integrated Stripe webhooks to automate enrolment on successful payment</div>
+              <div className="project-bullet">Developed LMS features serving 200+ users using React and Firebase</div>
+              <div className="project-bullet">Integrated Stripe webhooks to automate enrolment on successful payment and delivered completion certificates</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
@@ -540,24 +515,6 @@ export default function Portfolio() {
               </div>
               <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
               <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="project-header">
-              <div className="project-title">Amero-X Airdrop Platform</div>
-              <span className="project-badge badge-purple">WEB3</span>
-            </div>
-            <div className="project-bullets">
-              <div className="project-bullet">Contributed to gamified Web3 engagement platform serving 200+ users; implemented frontend mission components and Twitter API v2 social verification flow as part of a collaborative team</div>
-            </div>
-            <div className="project-footer">
-              <div className="project-stack">
-                <span className="tag purple">Next.js</span>
-                <span className="tag green">Firebase</span>
-                <span className="tag purple">REST APIs</span>
-                <span className="tag">Node.js</span>
-              </div>
-              <a href="http://airdrop.amerox.io/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
             </div>
           </div>
         </div>
