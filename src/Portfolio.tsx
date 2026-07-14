@@ -540,8 +540,8 @@ export default function Portfolio() {
                 <span className="tag green">Firebase</span>
                 <span className="tag purple">REST APIs</span>
               </div>
-              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+              <a href="https://houseprice.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
           <div className="project-card">
@@ -562,8 +562,8 @@ export default function Portfolio() {
                 <span className="tag">SQL</span>
                 <span className="tag purple">REST APIs</span>
               </div>
-              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="#" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+              <a href="https://ameroxfoundation.com" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
         </div>
