@@ -92,7 +92,7 @@ export default function Portfolio() {
   const [titleNumber, setTitleNumber] = useState(0);
 
   const titles = useMemo(
-    () => ['Software Engineer', 'Python Developer', 'AI Enthusiast'],
+    () => ['Full Stack Engineer', 'Python Developer', 'AI Enthusiast'],
     []
   );
 
@@ -295,13 +295,12 @@ export default function Portfolio() {
             </div>
 
             <p className="hero-role">
-              <strong>Software Engineer</strong> &amp; <strong>CS Student</strong><br />
+              <strong>Full Stack Engineer</strong> (Next.js/Python) &amp; <strong>CS Graduate</strong><br />
               based in Visakhapatnam, India
             </p>
 
             <p className="hero-desc">
-              Software Engineer with hands-on internship experience delivering production-grade platforms using Python, Next.js, and Firebase.
-              Skilled in REST API integration, data-driven Python development, and end-to-end project delivery.
+              Final-year Computer Science graduate with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using Python, Next.js, and Firebase. Strong foundation in programming logic, data structures, and software fundamentals.
             </p>
 
             <div className="hero-actions">
@@ -314,7 +313,7 @@ export default function Portfolio() {
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/venkata-sai-trishank-kamma-907802372" target="_blank" rel="noreferrer" className="social-link">
+              <a href="https://www.linkedin.com/in/saitrishank" target="_blank" rel="noreferrer" className="social-link">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
               </a>
@@ -355,9 +354,9 @@ export default function Portfolio() {
         </h2>
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I'm a <strong>Software Engineer</strong> and final-year CS student at Andhra University College of Engineering (2022–2026), with hands-on internship experience delivering production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
-            <p>I am highly skilled in <strong>REST API integration</strong>, data-driven Python development, and end-to-end project delivery. I am also familiar with <strong>ML fundamentals</strong> and the effective use of modern AI tools.</p>
-            <p>I am currently seeking <strong>Software Engineer roles</strong> to leverage my technical foundation and passion for building scalable systems.</p>
+            <p>I'm a <strong>Full Stack Engineer</strong> (Next.js/Python) and final-year CS graduate at Andhra University College of Engineering (Nov 2022 – May 2026), with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
+            <p>Strong foundation in <strong>programming logic, data structures, and software fundamentals</strong>, with applied experience in Python data pipelines, automation scripting, and ML model development.</p>
+            <p>Strong analytical and problem-solving skills, with a track record of <strong>independent, end-to-end project delivery</strong> in remote, fast-paced environments.</p>
           </div>
           <div className="about-stats">
             <div className="stat-card" ref={cgpa.ref}>
@@ -401,37 +400,84 @@ export default function Portfolio() {
             <div className="skill-group-icon">🐍</div>
             <div className="skill-group-title">Languages</div>
             <div className="skill-tags">
-              <span className="tag purple">Python</span>
-              <span className="tag">JavaScript</span>
-              <span className="tag">SQL</span>
+              <span className="tag purple">Python (strong)</span>
+              <span className="tag">JavaScript (basic)</span>
+              <span className="tag">SQL (basic)</span>
+              <span className="tag">HTML</span>
+              <span className="tag">CSS (basic)</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">💻</div>
+            <div className="skill-group-title">Backend & APIs</div>
+            <div className="skill-tags">
+              <span className="tag purple">REST APIs</span>
+              <span className="tag">Payment Gateway Integration</span>
+              <span className="tag">Google OAuth</span>
+              <span className="tag">Backend Development</span>
+              <span className="tag">Automation Scripting</span>
+              <span className="tag">Node.js</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">⚛️</div>
+            <div className="skill-group-title">Frontend & Frameworks</div>
+            <div className="skill-tags">
+              <span className="tag purple">Next.js</span>
+              <span className="tag">React.js (basic)</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">🗄️</div>
+            <div className="skill-group-title">Databases</div>
+            <div className="skill-tags">
+              <span className="tag purple">Firebase</span>
+              <span className="tag">Firestore</span>
+              <span className="tag">Realtime DB</span>
+              <span className="tag green">Auth</span>
+              <span className="tag">SQL (basic)</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">🧠</div>
-            <div className="skill-group-title">Core CS</div>
+            <div className="skill-group-title">Core CS & Programming Logic</div>
             <div className="skill-tags">
               <span className="tag purple">Data Structures & Algorithms</span>
-              <span className="tag">OOP</span>
-              <span className="tag">DBMS</span>
+              <span className="tag">Object-Oriented Programming</span>
+              <span className="tag">Software Fundamentals</span>
+              <span className="tag">Debugging</span>
+            </div>
+          </div>
+          <div className="skill-group">
+            <div className="skill-group-icon">🤖</div>
+            <div className="skill-group-title">Machine Learning & AI</div>
+            <div className="skill-tags">
+              <span className="tag purple">Scikit-Learn</span>
+              <span className="tag">Pandas</span>
+              <span className="tag">NumPy</span>
+              <span className="tag">Prompt Engineering</span>
+              <span className="tag green">AI Tools (Claude, ChatGPT, Gemini, Cursor)</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">🛠️</div>
-            <div className="skill-group-title">Tools</div>
+            <div className="skill-group-title">Tools & Version Control</div>
             <div className="skill-tags">
               <span className="tag">Git</span>
               <span className="tag">GitHub</span>
-              <span className="tag green">Firebase</span>
               <span className="tag">Vercel</span>
+              <span className="tag">VS Code</span>
             </div>
           </div>
           <div className="skill-group">
             <div className="skill-group-icon">💡</div>
-            <div className="skill-group-title">Interests</div>
+            <div className="skill-group-title">Soft Skills</div>
             <div className="skill-tags">
-              <span className="tag purple">AI/ML</span>
-              <span className="tag">Backend Development</span>
-              <span className="tag">Software Engineering</span>
+              <span className="tag purple">Analytical Thinking</span>
+              <span className="tag">Problem Solving</span>
+              <span className="tag">Critical Thinking</span>
+              <span className="tag">Logical Reasoning</span>
+              <span className="tag">Leadership</span>
             </div>
           </div>
         </div>
@@ -460,15 +506,16 @@ export default function Portfolio() {
               <span className="project-badge badge-purple">SAAS</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Built full-stack SaaS integrating Google Gemini AI with live web search to generate startup validation reports (TAM estimation, competitor analysis, risk assessment) via Next.js and Firebase</div>
-              <div className="project-bullet">Implemented Razorpay payment pipeline with server-side HMAC-SHA256 verification for premium upgrades; secured routes via Firebase Session Cookies and Next.js middleware</div>
+              <div className="project-bullet">Founders need fast, data-backed validation of startup ideas before committing time or capital</div>
+              <div className="project-bullet">Built full-stack SaaS with Python-backed REST API integration to Gemini AI and live web search, plus a Razorpay payment gateway automation pipeline with server-side HMAC-SHA256 signature verification</div>
+              <div className="project-bullet">Delivered automated TAM, competitor, and risk-assessment reports behind a secured, paid premium tier</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
+                <span className="tag">Python</span>
                 <span className="tag purple">Next.js</span>
                 <span className="tag green">Firebase</span>
                 <span className="tag">Gemini API</span>
-                <span className="tag">Razorpay</span>
                 <span className="tag purple">REST APIs</span>
               </div>
               <a href="https://idea-probe-app.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
@@ -481,14 +528,15 @@ export default function Portfolio() {
               <span className="project-badge">ML</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Built ML application trained on 20,600+ housing records achieving 81% prediction accuracy</div>
-              <div className="project-bullet">Delivered full-stack platform with Next.js 15; integrated Google Maps API for location analytics and Firebase for authentication and data persistence</div>
+              <div className="project-bullet">Buyers and sellers needed a fast, data-driven way to estimate property prices accurately</div>
+              <div className="project-bullet">Trained a Random Forest model in Python on 20,600+ property records with feature engineering and hyperparameter tuning, served via a REST API endpoint within a Next.js 15 + Firebase platform</div>
+              <div className="project-bullet">Achieved R² of 0.81 and MAE of $32,750, deployed live with Google Maps-based location analytics</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
-                <span className="tag purple">Next.js</span>
                 <span className="tag">Python</span>
                 <span className="tag">Scikit-Learn</span>
+                <span className="tag purple">Next.js</span>
                 <span className="tag green">Firebase</span>
                 <span className="tag purple">REST APIs</span>
               </div>
@@ -502,8 +550,9 @@ export default function Portfolio() {
               <span className="project-badge">EDU</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Developed LMS features serving 200+ users using React and Firebase</div>
-              <div className="project-bullet">Integrated Stripe webhooks to automate enrolment on successful payment and delivered completion certificates</div>
+              <div className="project-bullet">Platform needed scalable course delivery and automated enrolment across admin, instructor, and student roles</div>
+              <div className="project-bullet">Built production LMS with 3-role access control, video uploads, and progress tracking; integrated Stripe webhooks to automate enrolment on successful payment</div>
+              <div className="project-bullet">Delivered a live production system issuing completion certificates with fully automated payment-to-enrolment flow</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
@@ -541,13 +590,14 @@ export default function Portfolio() {
             <div className="timeline-dot dot-blue"></div>
             <div className="timeline-meta">
               <span className="timeline-company">ANACT INFOTECH</span>
-              <span className="timeline-date">Dec 2025 — Present</span>
+              <span className="timeline-date">Dec 2025 — Jun 2026</span>
               <span className="timeline-mode">Remote</span>
             </div>
-            <div className="timeline-role">Associate Software Engineer Intern</div>
+            <div className="timeline-role">Associate Software Engineer Intern (Python, Full Stack & Blockchain Development)</div>
             <div className="timeline-bullets">
-              <div className="timeline-bullet">Contributed to secure server-side REST API routes (Next.js + Node.js) connected to Firebase and Redis to validate quest completions and track XP, eliminating double-counting and front-end manipulation</div>
-              <div className="timeline-bullet">Worked on a gamified mission dashboard with 200+ registered users, tiered quests, and real-time leaderboard; integrated Twitter API v2 for social action verification and Firebase Auth + JWT for session management</div>
+              <div className="timeline-bullet">Blockchain team’s gamified crypto airdrop platform needed tamper-proof quest/XP tracking to stop double-counting and front-end manipulation across 200+ users</div>
+              <div className="timeline-bullet">Designed secure server-side REST API routes using full-stack web technologies (Python, Next.js, Node.js) backed by Firebase and Redis, with Firebase Auth + JWT session management and Twitter API v2 for social action verification</div>
+              <div className="timeline-bullet">Reduced invalid submissions by 35% through validation logic improvements, powering a real-time leaderboard for 200+ active users</div>
             </div>
           </div>
           <div className="timeline-item">
@@ -557,10 +607,11 @@ export default function Portfolio() {
               <span className="timeline-date">Jun 2025 — Aug 2025</span>
               <span className="timeline-mode">On-site</span>
             </div>
-            <div className="timeline-role">Machine Learning Intern</div>
+            <div className="timeline-role">Machine Learning Intern (Python)</div>
             <div className="timeline-bullets">
-              <div className="timeline-bullet">Built Python data processing pipelines on 20,000+ records using Pandas and NumPy; applied foundational ML techniques (Random Forest, Logistic Regression, K-Means) via Scikit-Learn</div>
-              <div className="timeline-bullet">Improved model accuracy by 12% over baseline through preprocessing: categorical encoding, feature scaling, and outlier handling; evaluated models using precision, recall, and F1 metrics</div>
+              <div className="timeline-bullet">Raw dataset of 20,000+ records needed cleaning and structuring before it could reliably train ML models</div>
+              <div className="timeline-bullet">Engineered Python data pipelines (Pandas, NumPy) with categorical encoding, feature scaling, and outlier handling, then applied Random Forest, Logistic Regression, and K-Means via Scikit-Learn</div>
+              <div className="timeline-bullet">Improved model accuracy by 12% over baseline, validated using precision, recall, and F1 metrics</div>
             </div>
           </div>
         </div>
@@ -586,7 +637,7 @@ export default function Portfolio() {
           <div className="edu-card">
             <div className="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
             <div className="edu-school">Andhra University College of Engineering</div>
-            <div className="edu-year">2022 — 2026 · Visakhapatnam</div>
+            <div className="edu-year">Nov 2022 — May 2026 · Visakhapatnam</div>
             <ScoreRing value={8.12} max={10} label="CGPA" />
           </div>
           <div className="edu-card">
@@ -627,7 +678,7 @@ export default function Portfolio() {
                 icon: <Cloud className="size-4 text-[#ff5722]" />,
                 title: "Google Cloud",
                 description: "Diamond League",
-                date: "Aug 2025",
+                date: "Jun – Aug 2025",
                 iconClassName: "text-[#ff5722]",
                 titleClassName: "text-[#ff5722]",
                 className: "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0"
@@ -665,9 +716,9 @@ export default function Portfolio() {
         <div className="contact-inner reveal">
           <p className="contact-sub">Open to internship opportunities, collaborations, and interesting projects. Feel free to reach out — I respond quickly!</p>
           <div className="contact-links">
-            <a href="mailto:saitrishankb9@gmail.com" className="contact-link">
+            <a href="mailto:trishankofficial1311@gmail.com" className="contact-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              saitrishankb9@gmail.com
+              trishankofficial1311@gmail.com
             </a>
             <a href="tel:+918179369677" className="contact-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.4 10.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012.31 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
@@ -677,7 +728,7 @@ export default function Portfolio() {
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/venkata-sai-trishank-kamma-907802372" target="_blank" rel="noreferrer" className="contact-link">
+            <a href="https://www.linkedin.com/in/saitrishank" target="_blank" rel="noreferrer" className="contact-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn
             </a>
