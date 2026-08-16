@@ -566,6 +566,28 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">AgriSense: Smart Irrigation System</div>
+              <span className="project-badge badge-purple">HACKATHON</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Smallholder farmers needed actionable irrigation recommendations to optimize water usage based on real-time data</div>
+              <div className="project-bullet">Built a serverless advisory platform with React and Firebase; engineered a pure Python FastAPI backend to compute crop-specific deficit factors and recommend precise water volumes</div>
+              <div className="project-bullet">Delivered a lightning-fast analytics engine with optimized cold starts for the Codegnan Hackathon 2026</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag">Python</span>
+                <span className="tag purple">FastAPI</span>
+                <span className="tag">React</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag">Tailwind</span>
+              </div>
+              <a href="https://smart-irrigation-advisory.vercel.app/simulator" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/Smart-Irrigation-Advisory-System" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
         </div>
       </section>
 
