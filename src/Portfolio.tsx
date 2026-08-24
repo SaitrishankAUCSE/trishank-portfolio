@@ -502,6 +502,34 @@ export default function Portfolio() {
         <div className="projects-grid reveal">
           <div className="project-card">
             <div className="project-header">
+              <div className="project-title">MeritLane – Technical Talent Verification Platform</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, flexWrap: 'wrap' }}>
+                <span className="project-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#ff8a65', borderColor: 'rgba(255,112,67,0.35)', background: 'rgba(255,112,67,0.08)' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ff5722', display: 'inline-block', boxShadow: '0 0 8px #ff5722' }}></span>
+                  In Building
+                </span>
+                <span className="project-badge badge-purple">STARTUP</span>
+              </div>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Founded startup to solve hiring bias in India, enabling high-potential Tier-2 &amp; Tier-3 engineering talent to get hired on verified proof of skill rather than college pedigree</div>
+              <div className="project-bullet">Architected and built full-stack verification platform featuring multi-role auth, candidate codebase auditing, employer talent query engine, and signal validation protocols</div>
+              <div className="project-bullet">Delivered high-performance production system with verified skill auditing workflows, employer discovery pipelines, and seamless SSR architecture</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag purple">REST APIs</span>
+              </div>
+              <a href="https://merit-lane.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/MeritLane" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+          <div className="project-card">
+            <div className="project-header">
               <div className="project-title">IdeaProbe – AI Startup Validator</div>
               <span className="project-badge badge-purple">SAAS</span>
             </div>
