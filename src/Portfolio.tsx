@@ -588,6 +588,28 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/Smart-Irrigation-Advisory-System" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">MeritLane – Technical Talent Verification Platform</div>
+              <span className="project-badge badge-purple">SAAS</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Tier-2 and Tier-3 engineering talent in India needed a proof-of-skill platform to bypass pedigree-based screening with audited technical evidence</div>
+              <div className="project-bullet">Built full-stack verification platform featuring multi-role authentication, employer search querying candidate profiles, signal validation logs, and responsive dashboard navigation</div>
+              <div className="project-bullet">Delivered high-performance production system with verified skill auditing protocols, employer talent pipelines, and seamless SSR architecture</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag green">Firebase</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag purple">REST APIs</span>
+              </div>
+              <a href="https://merit-lane.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/MeritLane" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
         </div>
       </section>
 
