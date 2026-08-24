@@ -591,12 +591,12 @@ export default function Portfolio() {
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">MeritLane – Technical Talent Verification Platform</div>
-              <span className="project-badge badge-purple">SAAS</span>
+              <span className="project-badge badge-purple">STARTUP</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Tier-2 and Tier-3 engineering talent in India needed a proof-of-skill platform to bypass pedigree-based screening with audited technical evidence</div>
-              <div className="project-bullet">Built full-stack verification platform featuring multi-role authentication, employer search querying candidate profiles, signal validation logs, and responsive dashboard navigation</div>
-              <div className="project-bullet">Delivered high-performance production system with verified skill auditing protocols, employer talent pipelines, and seamless SSR architecture</div>
+              <div className="project-bullet">Founded startup to solve hiring bias in India, enabling high-potential Tier-2 & Tier-3 engineering talent to get hired on verified proof of skill rather than college pedigree</div>
+              <div className="project-bullet">Architected and built full-stack verification platform featuring multi-role auth, candidate codebase auditing, employer talent query engine, and signal validation protocols</div>
+              <div className="project-bullet">Delivered high-performance production system with verified skill auditing workflows, employer discovery pipelines, and seamless SSR architecture</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
