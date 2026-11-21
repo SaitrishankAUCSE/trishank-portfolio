@@ -5,7 +5,7 @@ import { MeshGradient } from '@paper-design/shaders-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Home, User, Wrench, FolderGit2, Briefcase, Mail,
-  GraduationCap, Cloud, TrendingUp
+  GraduationCap, Cloud, TrendingUp, Layers
 } from 'lucide-react';
 import DisplayCards from './components/ui/display-cards';
 
@@ -134,6 +134,7 @@ export default function Portfolio() {
     { title: 'Skills', icon: Wrench, href: '#skills' },
     { type: 'separator' as const },
     { title: 'Projects', icon: FolderGit2, href: '#projects' },
+    { title: 'Freelance', icon: Layers, href: '#freelance' },
     { title: 'Experience', icon: Briefcase, href: '#experience' },
     { type: 'separator' as const },
     { title: 'Education', icon: GraduationCap, href: '#education' },
@@ -185,7 +186,7 @@ export default function Portfolio() {
             const rect = target.getBoundingClientRect();
             const x = ((ev.clientX - rect.left) / rect.width) * 100;
             const y = ((ev.clientY - rect.top) / rect.height) * 100;
-            target.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(201,169,110,0.04) 0%, var(--surface-1) 60%)`;
+            target.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,87,34,0.06) 0%, var(--surface-1) 60%)`;
           });
           card.addEventListener('mouseleave', () => {
             (card as HTMLElement).style.background = '';
@@ -300,11 +301,15 @@ export default function Portfolio() {
             </p>
 
             <p className="hero-desc">
-              Final-year Computer Science graduate with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using Python, Next.js, and Firebase. Strong foundation in programming logic, data structures, and software fundamentals.
+              Computer Science graduate with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using Python, Next.js, and Firebase. Strong foundation in programming logic, data structures, and software fundamentals.
             </p>
 
             <div className="hero-actions">
               <a href="#projects" className="btn-primary">Explore Artifacts ↓</a>
+              <a href="/sai-trishank-resume.pdf" target="_blank" rel="noreferrer" className="btn-resume">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Resume ↗
+              </a>
               <a href="#contact" className="btn-ghost">Get in Touch</a>
             </div>
 
@@ -328,10 +333,6 @@ export default function Portfolio() {
               <div className="hero-portrait-ring-inner" />
               <img src="/assets/portrait.png" alt="Artistic Portrait" className="hero-image" />
             </div>
-            <div className="hero-status" style={{ position: 'absolute', bottom: '-30px' }}>
-              <span className="status-dot" />
-              Available for opportunities
-            </div>
           </div>
         </div>
       </section>
@@ -354,7 +355,7 @@ export default function Portfolio() {
         </h2>
         <div className="about-grid reveal">
           <div className="about-text">
-            <p>I'm a <strong>Full Stack Engineer</strong> (Next.js/Python) and final-year CS graduate at Andhra University College of Engineering (Nov 2022 – May 2026), with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
+            <p>I'm a <strong>Full Stack Engineer</strong> (Next.js/Python) and Computer Science graduate from Andhra University College of Engineering (Nov 2022 – May 2026), with hands-on internship experience building REST APIs, backend automation, and production-grade platforms using <strong>Python, Next.js, and Firebase</strong>.</p>
             <p>Strong foundation in <strong>programming logic, data structures, and software fundamentals</strong>, with applied experience in Python data pipelines, automation scripting, and ML model development.</p>
             <p>Strong analytical and problem-solving skills, with a track record of <strong>independent, end-to-end project delivery</strong> in remote, fast-paced environments.</p>
           </div>
@@ -496,10 +497,11 @@ export default function Portfolio() {
             transition={{ type: 'spring', stiffness: 50 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            Selected Artifacts
+            Personal Projects
           </motion.span>
         </h2>
         <div className="projects-grid reveal">
+          {/* Project 1: MeritLane */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">MeritLane – Technical Talent Verification Platform</div>
@@ -528,6 +530,32 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/MeritLane" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
+
+          {/* Project 2: Vizag Startup Map */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Vizag Startup Map – Ecosystem Directory</div>
+              <span className="project-badge badge-purple">ECOSYSTEM</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Built high-performance directory and verified registry of startups, angel investors, and incubators across Visakhapatnam with zero fake data policies</div>
+              <div className="project-bullet">Integrated interactive MapLibre GL mapping engine with geolocation filtering, categorization tags, and instant full-text search</div>
+              <div className="project-bullet">Engineered incremental static revalidation (ISR) for instant page loads and automated submission verification workflows</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag">MapLibre GL</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag green">ISR</span>
+              </div>
+              <a href="https://vizag-startup-map.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/vizag-startup-map" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+
+          {/* Project 3: IdeaProbe */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">IdeaProbe – AI Startup Validator</div>
@@ -550,6 +578,8 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/idea-probe-app" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
+
+          {/* Project 4: HomieNest */}
           <div className="project-card">
             <div className="project-header">
               <div className="project-title">HomieNest – AI Real Estate Platform</div>
@@ -572,32 +602,195 @@ export default function Portfolio() {
               <a href="https://github.com/SaitrishankAUCSE/House-Price-Prediction-Project" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
             </div>
           </div>
+
+          {/* Project 5: Adaptive Layout Engine */}
           <div className="project-card">
             <div className="project-header">
-              <div className="project-title">Amero-X LMS</div>
-              <span className="project-badge">EDU</span>
+              <div className="project-title">Adaptive Layout Engine – Multi-Surface Ads</div>
+              <span className="project-badge badge-purple">ENGINEERING</span>
             </div>
             <div className="project-bullets">
-              <div className="project-bullet">Platform needed scalable course delivery and automated enrolment across admin, instructor, and student roles</div>
-              <div className="project-bullet">Built production LMS with 3-role access control, video uploads, and progress tracking; integrated Stripe webhooks to automate enrolment on successful payment</div>
-              <div className="project-bullet">Delivered a live production system issuing completion certificates with fully automated payment-to-enrolment flow</div>
+              <div className="project-bullet">Engineered an autonomous pure TypeScript layout engine computing optimal creative compositions across dynamic surface aspect ratios in real time</div>
+              <div className="project-bullet">Implemented constraint satisfaction algorithms supporting instant morphing across Billboard (16:9), Square (1:1), Story (9:16), and Feed (4:5) formats</div>
+              <div className="project-bullet">Built interactive simulator canvas allowing developers and designers to stress-test bounding box hierarchies under variable constraints</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">TypeScript</span>
+                <span className="tag">React</span>
+                <span className="tag">Canvas API</span>
+                <span className="tag green">Algorithms</span>
+                <span className="tag">Tailwind</span>
+              </div>
+              <a href="https://anysize-ads.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/Adaptive-Layout-Engine-for-Multi-Surface-Ads" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divider"></div>
+
+      {/* ── FREELANCE WORKS ── */}
+      <section id="freelance" className="portfolio-section">
+        <p className="section-label reveal">04 — Freelance</p>
+        <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
+          <motion.span
+            style={{ display: "inline-block" }}
+            initial={{ y: 150, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 50 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            Freelance Works
+          </motion.span>
+        </h2>
+        <div className="projects-grid reveal">
+          {/* Freelance 1: Vaadas */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Vaadas – Mutual P2P Commitment System</div>
+              <span className="project-badge badge-purple">LEGAL TECH</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Engineered mobile-first peer-to-peer financial and mutual commitment agreement ledger under the Indian Information Technology Act 2000</div>
+              <div className="project-bullet">Implemented dual-party OTP authentication, tamper-evident audit trails, and automated legally-admissible agreement generation</div>
+              <div className="project-bullet">Delivered responsive, secure user interfaces with real-time obligation statuses and automated reminders</div>
             </div>
             <div className="project-footer">
               <div className="project-stack">
                 <span className="tag purple">Next.js</span>
-                <span className="tag green">Firebase</span>
-                <span className="tag">Stripe</span>
-                <span className="tag">SQL</span>
-                <span className="tag purple">REST APIs</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag green">PostgreSQL</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag purple">OTP APIs</span>
               </div>
-              <a href="https://ameroxfoundation.com" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
-              <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+              <a href="https://vaadas.vercel.app" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
             </div>
           </div>
+
+          {/* Freelance 2: JobAgent */}
           <div className="project-card">
             <div className="project-header">
-              <div className="project-title">AgriSense: Smart Irrigation System</div>
-              <span className="project-badge badge-purple">HACKATHON</span>
+              <div className="project-title">JobAgent – AI Job Search Assistant</div>
+              <span className="project-badge">AI / AUTOMATION</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Built an intelligent automated job application assistant designed to streamline candidate discovery and application workflows</div>
+              <div className="project-bullet">Engineered resume-to-job matching algorithms, automated cover letter generation pipelines, and web scrapers across tech career portals</div>
+              <div className="project-bullet">Developed interactive pipeline dashboard tracking application progress, response rates, and interview stages</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag">Python</span>
+                <span className="tag purple">FastAPI</span>
+                <span className="tag">React</span>
+                <span className="tag green">AI APIs</span>
+                <span className="tag">Playwright</span>
+              </div>
+              <a href="https://github.com/SaitrishankAUCSE" target="_blank" rel="noreferrer" className="project-link"><span>GitHub Profile ↗</span></a>
+            </div>
+          </div>
+
+          {/* Freelance 3: Osto-assignment */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Osto – Enterprise Workflow Assessment</div>
+              <span className="project-badge badge-purple">FULL STACK</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Delivered high-performance web application featuring custom assessment workflows, modular state management, and role-based access</div>
+              <div className="project-bullet">Architected robust backend API endpoints with validation filters and fast query resolution</div>
+              <div className="project-bullet">Designed polished, intuitive user interfaces with responsive layout adaptations for desktop and mobile</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">React</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag">Node.js</span>
+                <span className="tag green">Tailwind</span>
+                <span className="tag purple">REST APIs</span>
+              </div>
+              <a href="https://github.com/SaitrishankAUCSE/Osto-Assignment" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+
+          {/* Freelance 4: Bhume Land Boundary Correction */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Bhume – Land Boundary Correction Tool</div>
+              <span className="project-badge">GIS / GEOSPATIAL</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Developed geospatial boundary adjustment and cadastral parcel correction tool for land survey datasets</div>
+              <div className="project-bullet">Built interactive coordinate snapping, polygon boundary dragging, GeoJSON coordinate parsers, and precision area discrepancy computations</div>
+              <div className="project-bullet">Delivered streamlined visual tool reducing manual correction cycles for surveyor workflows</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag">Python</span>
+                <span className="tag purple">React</span>
+                <span className="tag">Leaflet / MapLibre</span>
+                <span className="tag green">GeoJSON</span>
+                <span className="tag">FastAPI</span>
+              </div>
+              <a href="https://github.com/SaitrishankAUCSE/bhume-land-boundary-correction" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+
+          {/* Freelance 5: Miscom */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Miscom – Business Operations &amp; Dispatch Portal</div>
+              <span className="project-badge badge-purple">COMMERCE</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Engineered centralized business operations and dispatch communication management portal</div>
+              <div className="project-bullet">Integrated real-time order tracking, client notifications, and multi-channel transaction logging</div>
+              <div className="project-bullet">Built intuitive administrative console with role permissions, searchable logs, and automated alerts</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">Next.js</span>
+                <span className="tag">Node.js</span>
+                <span className="tag green">PostgreSQL</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag purple">Webhooks</span>
+              </div>
+              <a href="https://miscom-xi.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/miscom-chat-platform" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+
+          {/* Freelance 6: Corevix */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Corevix – Telemetry &amp; System Analytics Dashboard</div>
+              <span className="project-badge">SYSTEMS</span>
+            </div>
+            <div className="project-bullets">
+              <div className="project-bullet">Constructed high-speed monitoring telemetry dashboard visualizing key operational metrics and server status health</div>
+              <div className="project-bullet">Implemented real-time charting with minimal render overhead and custom interactive inspection cards</div>
+              <div className="project-bullet">Designed responsive modern dark theme with customizable data filtering controls</div>
+            </div>
+            <div className="project-footer">
+              <div className="project-stack">
+                <span className="tag purple">React</span>
+                <span className="tag">TypeScript</span>
+                <span className="tag">Tailwind</span>
+                <span className="tag green">Chart.js</span>
+                <span className="tag purple">REST APIs</span>
+              </div>
+              <a href="https://corevix-fitness.vercel.app/" target="_blank" rel="noreferrer" className="project-link"><span>Live Demo ↗</span></a>
+              <a href="https://github.com/SaitrishankAUCSE/corevix-fitness-tracker" target="_blank" rel="noreferrer" className="project-link"><span>GitHub ↗</span></a>
+            </div>
+          </div>
+
+          {/* Freelance 7: Smart Irrigation Advisory System */}
+          <div className="project-card">
+            <div className="project-header">
+              <div className="project-title">Smart Irrigation Advisory System (AgriSense)</div>
+              <span className="project-badge badge-purple">AGRITECH</span>
             </div>
             <div className="project-bullets">
               <div className="project-bullet">Smallholder farmers needed actionable irrigation recommendations to optimize water usage based on real-time data</div>
@@ -623,7 +816,7 @@ export default function Portfolio() {
 
       {/* ── EXPERIENCE ── */}
       <section id="experience" className="portfolio-section">
-        <p className="section-label reveal">04 — Experience</p>
+        <p className="section-label reveal">05 — Experience &amp; Internships</p>
         <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
           <motion.span
             style={{ display: "inline-block" }}
@@ -643,11 +836,22 @@ export default function Portfolio() {
               <span className="timeline-date">Dec 2025 — Jun 2026</span>
               <span className="timeline-mode">Remote</span>
             </div>
-            <div className="timeline-role">Associate Software Engineer Intern (Python, Full Stack & Blockchain Development)</div>
+            <div className="timeline-role">Associate Software Engineer Intern (Python, Full Stack &amp; Blockchain Development)</div>
             <div className="timeline-bullets">
-              <div className="timeline-bullet">Blockchain team’s gamified crypto airdrop platform needed tamper-proof quest/XP tracking to stop double-counting and front-end manipulation across 200+ users</div>
-              <div className="timeline-bullet">Designed secure server-side REST API routes using full-stack web technologies (Python, Next.js, Node.js) backed by Firebase and Redis, with Firebase Auth + JWT session management and Twitter API v2 for social action verification</div>
-              <div className="timeline-bullet">Reduced invalid submissions by 35% through validation logic improvements, powering a real-time leaderboard for 200+ active users</div>
+              <div className="timeline-bullet">
+                <strong>Amerox-Airdrop &amp; Airdrop Game:</strong> Architected tamper-proof quest/XP tracking and double-spend mitigation for gamified crypto airdrop platform across 200+ users. &nbsp;
+                <a href="https://github.com/SaitrishankAUCSE/airdrop-game" target="_blank" rel="noreferrer" style={{ color: '#ff5722', textDecoration: 'none', fontWeight: 500 }}>[Repo ↗]</a>
+              </div>
+              <div className="timeline-bullet">
+                <strong>Twitter Game:</strong> Built server-side social verification engine using Twitter API v2, Firebase Auth, and JWT session management, reducing invalid action submissions by 35%. &nbsp;
+                <a href="https://github.com/SaitrishankAUCSE/twitter-game" target="_blank" rel="noreferrer" style={{ color: '#ff5722', textDecoration: 'none', fontWeight: 500 }}>[Repo ↗]</a>
+              </div>
+              <div className="timeline-bullet">
+                <strong>Amero-X LMS:</strong> Developed scalable learning management system with 3-role access control, secure video delivery, and automated Stripe webhooks for instant payment-to-enrolment flow. &nbsp;
+                <a href="https://ameroxfoundation.com" target="_blank" rel="noreferrer" style={{ color: '#ff5722', textDecoration: 'none', fontWeight: 500 }}>[Live Platform ↗]</a> &nbsp;
+                <a href="https://github.com/SaitrishankAUCSE/Amero-X-LMS" target="_blank" rel="noreferrer" style={{ color: '#ff5722', textDecoration: 'none', fontWeight: 500 }}>[Repo ↗]</a>
+              </div>
+              <div className="timeline-bullet">Engineered secure REST API routes using Python, Next.js, and Node.js backed by Firebase and Redis, powering real-time leaderboard states.</div>
             </div>
           </div>
           <div className="timeline-item">
@@ -671,7 +875,7 @@ export default function Portfolio() {
 
       {/* ── EDUCATION ── */}
       <section id="education" className="portfolio-section">
-        <p className="section-label reveal">05 — Education</p>
+        <p className="section-label reveal">06 — Education</p>
         <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
           <motion.span
             style={{ display: "inline-block" }}
@@ -709,7 +913,7 @@ export default function Portfolio() {
 
       {/* ── ACHIEVEMENTS ── */}
       <section id="achievements" className="portfolio-section" style={{ overflow: 'hidden' }}>
-        <p className="section-label reveal">06 — Achievements</p>
+        <p className="section-label reveal">07 — Achievements</p>
         <h2 className="section-title reveal" style={{ overflow: "hidden" }}>
           <motion.span
             style={{ display: "inline-block" }}
@@ -751,7 +955,7 @@ export default function Portfolio() {
 
       {/* ── CONTACT ── */}
       <section id="contact" className="portfolio-section">
-        <p className="section-label reveal" style={{ textAlign: 'center' }}>07 — Contact</p>
+        <p className="section-label reveal" style={{ textAlign: 'center' }}>08 — Contact</p>
         <h2 className="section-title reveal" style={{ overflow: "hidden", textAlign: 'center' }}>
           <motion.span
             style={{ display: "inline-block" }}
